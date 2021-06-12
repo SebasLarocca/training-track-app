@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- JavaScript Bundle with Popper -->
+    <!-- CSS only -->
+    <link href="./bootstrap.css" rel="stylesheet">
+    <link href="./styles.css" rel="stylesheet">
+    <title>Training track</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-3">
+            
+                <h3 class='text-secondary'>Datos entrenamiento</h3>
+
+                <input placeholder="Tipo de entrenamiento" class='input-tipoDeEntrenamiento input-group mb-3' id="input-tipoEntrenamiento" type="text">
+                <input placeholder="Duración" class='text-warning input-group mb-3 inputColor' id="input-duracion" type="text">
+                <input placeholder="Vueltas" class='input-group mb-3' id="input-vueltas" type="text">
+                <input placeholder="Fecha programada" class='input-group mb-3' id="input-fechaProgramada" type="date">
+                
+                <button class='btn btn-success' id="buttonInputEntrenamiento" >Agregar entrenamiento</button>
+
+            </div>
+            
+            <div class="col-md-3">
+                
+                <h3 class='text-secondary'>Componentes</h3>
+
+                <input placeholder="Elemento" class='input-group input-group-sm mb-3'  id="input-elemento" type="text">
+                <input placeholder="Peso" class='input-group mb-3'  id="input-peso" type="text">
+                <input placeholder="Ejercicio" class='input-group mb-3'  id="input-ejercicio" type="text">
+                <input placeholder="Repeticiones" class='input-group mb-3' id="input-repeticiones" type="text">
+                <input placeholder="Metros" class='input-group mb-3' id="input-metros" type="text">
+                
+                <button class=' btn btn-success' id="buttonInputComponente" >Agregar componente</button>
+            
+            </div>
+
+            <div class="col-md-5">
+                <h3 class='text-secondary'>Programación</h3>
+                
+                <button class=' btn btn-success' id="buttonAgregaEntrenamiento" >Agregar a programación</button>
+                <ul id="entrenamientos"></ul>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src='./json.js' ></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+</html>
