@@ -3016,8 +3016,8 @@ textarea.form-control-lg {
 }
 .btn-success:disabled, .btn-success.disabled {
   color: #fff;
-  background-color: #198754;
-  border-color: #198754;
+  background-color: grey;
+  border-color: grey;
 }
 
 .btn-info {

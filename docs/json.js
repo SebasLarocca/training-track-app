@@ -2,6 +2,10 @@
 const entrenamientos        = [];
 const componentes           = [];
 
+// selectores generales
+const main = document.querySelector('#main');
+const intro = document.querySelector('#intro')
+
 // Selectores entrenamiento
 const inputFechaProgramada      = document.querySelector('#input-fechaProgramada');
 const inputTipoEntrenamiento    = document.querySelector('#input-tipoEntrenamiento');
@@ -22,8 +26,36 @@ const listaEntrenamientos       = document.querySelector('#entrenamientos');
 const botonComponente           = document.querySelector('#buttonInputComponente');
 const botonEntrenamiento        = document.querySelector('#buttonInputEntrenamiento');
 const botonAgregaEntrenamiento  = document.querySelector('#buttonAgregaEntrenamiento');
+const botonDefinirEntrenamiento = document.querySelector('#buttonDefinirEntrenamiento');
+
+// script para la intro de inicio:
+main.style.visibility = "hidden";
+setTimeout(() => {
+    intro.style.visibility = 'hidden';
+    main.style.visibility = "visible";
+    
+}, 1000);
 
 // metodos
+
+const init = ()=>{
+    botonEntrenamiento.disabled = true;
+    botonAgregaEntrenamiento.disabled = true;
+    botonDefinirEntrenamiento.disabled = true;
+    botonComponente.disabled = false;
+
+};
+
+
+init();
+
+const habilitaEntrenamiento = ()=>{
+
+    botonComponente.disabled = true;
+    botonDefinirEntrenamiento.disabled = true;
+    botonEntrenamiento.disabled = false 
+}
+
 const componente = (elemento, peso, ejercicio, repeticiones, metros)=>{
     
     componentes.push({
@@ -35,6 +67,7 @@ const componente = (elemento, peso, ejercicio, repeticiones, metros)=>{
         });
 
         console.log( componentes )
+        botonDefinirEntrenamiento.disabled = false;
 };
 
 const entrenamiento = (tipoDeEntrenamiento, duracion, vueltas, fechaProgramada, componentes )=>{
@@ -144,7 +177,13 @@ const valorEjercicio = inputEjercicio.addEventListener( 'keyup', (e)=>{
     console.log( metros );
  } );
  
+
 // listeners botones
 botonComponente.addEventListener( 'click', (e)=>{ componente(elemento, peso, ejercicio, repeticiones, metros) });
-botonEntrenamiento.addEventListener( 'click', (e)=>{ entrenamiento( tipoDeEntrenamiento, duracion, vueltas, fechaProgramada, componentes ) });
-botonAgregaEntrenamiento.addEventListener( 'click', ()=>{ agregaEntrenamiento(entrenamientos) } );
+botonEntrenamiento.addEventListener( 'click', (e)=>{ 
+    entrenamiento( tipoDeEntrenamiento, duracion, vueltas, fechaProgramada, componentes );
+    agregaEntrenamiento(entrenamientos);
+    init()
+ });
+// botonAgregaEntrenamiento.addEventListener( 'click', ()=>{ agregaEntrenamiento(entrenamientos) } );
+botonDefinirEntrenamiento.addEventListener( 'click', (  ()=> {habilitaEntrenamiento()} ) )
