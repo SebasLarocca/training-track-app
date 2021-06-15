@@ -48,7 +48,7 @@ const entrenamiento = (tipoDeEntrenamiento, duracion, vueltas, fechaProgramada, 
         vueltas: vueltas,
         fechaCreacion: fecha,
         fechaProgramada: fechaProgramada,
-        componentes: {componentes},
+        componentes: componentes,
     })
 
      console.log( entrenamientos );
@@ -59,12 +59,22 @@ const agregaEntrenamiento = ( entrenamientos )=>{
     let listaEntrenamientosHTML = '';
 
     entrenamientos.forEach(element => {
+        element.componentes.forEach( element1 => {console.log(element1.elemento)} )
+    });     
 
+    entrenamientos.forEach(element => {
+
+        let componentesHTML = '';
+        element.componentes.forEach( element1 =>{ componentesHTML = componentesHTML + (element1.elemento)} )
         listaEntrenamientosHTML =listaEntrenamientosHTML + `
         
         <li>
-        Fecha: ${element.fechaProgramada} 
+        ${element.fechaProgramada} 
         Tipo: ${element.tipoDeEntrenamiento}
+        Duración: ${element.duracion}
+        Vueltas: ${element.vueltas}
+        Ejercicios: ${ componentesHTML }
+        
         
         </li>`;
           
