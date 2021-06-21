@@ -6,12 +6,14 @@ const componentes           = [];
 const intro = document.querySelector('#intro') // intro
 
 // Selectores entrenamiento
+const bloqueEntrenamiento       = document.querySelector('#bloque-entrenamiento')
 const inputFechaProgramada      = document.querySelector('#input-fechaProgramada');
 const inputTipoEntrenamiento    = document.querySelector('#input-tipoEntrenamiento');
 const inputDuracion             = document.querySelector('#input-duracion');
 const inputVueltas              = document.querySelector('#input-vueltas');
 
 // Selectores componente
+const bloqueEjercicios          = document.querySelector('#bloque-ejercicios')
 const inputPeso                 = document.querySelector('#input-peso');
 const inputElemento             = document.querySelector('#input-elemento');
 const inputEjercicio            = document.querySelector('#input-ejercicio');
@@ -37,19 +39,22 @@ const init = ()=>{
     botonDefinirEntrenamiento.disabled = true;
     botonComponente.disabled = false;
     botonAgregaEntrenamiento.style.visibility = "hidden";
+    bloqueEntrenamiento.style.visibility = "hidden";
+    bloqueEjercicios.style.visibility = "visible";
 
 };
 
 init();
 
-
 const habilitaEntrenamiento = ()=>{
 
     botonComponente.disabled = true;
     botonDefinirEntrenamiento.disabled = true;
-    botonEntrenamiento.disabled = false 
+    botonEntrenamiento.disabled = false;
+    bloqueEntrenamiento.style.visibility = "visible";
+    bloqueEjercicios.style.visibility = "hidden";
+    
 }
-
 
 // Ejercicio : ${ element.ejercicio }, Repeticiones: ${ element.repeticiones }, Peso: ${ element.peso }, Elemento ${ element.elemento }, Metros: ${ element.metros }</li>` } );
 
