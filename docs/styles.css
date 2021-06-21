@@ -1,8 +1,410 @@
-body {
-    background-color: #4a69bd   ;
-    
-};
 
-.btn {
-    background-color: #6a89cc;
+/* Comienzan las clases traidas del css de las trjetas para el entrenamiento*/
+
+
+a,
+.card__exit,
+.card__icon {
+  position: relative;
+  text-decoration: none;
+  color: #474544;
+}
+
+a::after {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  content: "";
+  width: 0%;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all 0.5s;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* usada */
+.card-container {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #474544;
+	font-size: 1.000em;
+  font-weight: 400;
+  letter-spacing: 1px;
+	padding: 0 0 0.875em 0;
+  text-transform: uppercase;
+  /* position: relative;
+  top: 100px;
+  margin-top: -350px; */
+	
+}
+
+/* usada */
+.card {
+  margin: 20px;
+  padding: 20px;
+  width: 500px;
+  min-height: 200px;
+  display: grid;
+  /* grid-template-rows: 5px 5px 1fr 5px; */
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.5s;
+}
+
+.card:hover {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
+}
+
+/* usada */
+.card__exit {
+  /* grid-row: 1/2; */
+  justify-self: end;
+}
+
+/* usada */
+.card__icon {
+  /* grid-row: 2/3; */
+  font-size: 30px;
+}
+
+/* usada */
+.card__title {
+  /* grid-row: 3/4; */
+  font-weight: 400;
+  font-size: 10px;
+  color: #474544;
+}
+
+/* usada */
+.card__apply {
+  /* grid-row: 4/5; */
+  align-self: center;
+  font-size: 12px;
+}
+
+/* usada */
+.card-1 {
+  background: radial-gradient(white, #F2F3EB);
+}
+
+@media (max-width: 1600px) {
+  .card-container {
+    justify-content: center;
+  }
+}
+
+/* finalizan las clases para las tarjetas */
+
+/* comienzan clases traidas de bootstrap */
+
+.container-fluid {
+
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x) / -2);
+  margin-left: calc(var(--bs-gutter-x) / -2);
+}
+
+.col-md-1 {
+  flex: 0 0 auto;
+  width: 8.3333333333%;
+}
+
+.col-md-2 {
+  flex: 0 0 auto;
+  width: 16.6666666667%;
+}
+
+.col-md-3 {
+  flex: 0 0 auto;
+  width: 25%;
+}
+
+.col-md-4 {
+  flex: 0 0 auto;
+  width: 33.3333333333%;
+}
+
+.col-md-5 {
+  flex: 0 0 auto;
+  width: 41.6666666667%;
+}
+
+.col-md-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.col-md-7 {
+  flex: 0 0 auto;
+  width: 58.3333333333%;
+}
+
+.col-md-8 {
+  flex: 0 0 auto;
+  width: 66.6666666667%;
+}
+
+/* finalizan clases traidas de bootstrap */
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html {
+  font-family: 'Montserrat', Arial, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #F2F3EB;
+}
+
+button {
+  overflow: visible;
+  border-radius: 10px;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, input, select, textarea {
+  color: #5A5A5A;
+  font: inherit;
+  margin: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+textarea {
+  overflow: auto;
+}
+
+#container {
+  border: solid 3px #474544;
+  max-width: 400px;
+  margin: 60px auto;
+  position: relative;
+  border-radius: 10px;
+}
+
+#container-cards {
+    max-width: 400px;
+    margin: 60px auto;
+    position: relative;
+  }
+
+form {
+  padding: 37.5px;
+  margin: 5px 0;
+}
+
+h1 {
+  color: #474544;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 7px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.underline {
+  border-bottom: solid 2px #474544;
+  margin: -0.512em auto;
+  width: 80px;
+}
+
+.icon_wrapper {
+  margin: 30px auto 0;
+  width: 100%;
+}
+
+.icon {
+  display: block;
+  fill: #474544;
+  height: 60px;
+  margin: 0 auto;
+  width: 100px;
+}
+
+.email {
+	float: right;
+	width: 45%;
+}
+
+input[type='text'], [type='email'], [type='date'], select, textarea {
+	background: none;
+  border: none;
+	border-bottom: solid 2px #474544;
+	color: #474544;
+	font-size: 1.000em;
+  font-weight: 400;
+  letter-spacing: 1px;
+	margin: 0em 0 1.875em 0;
+	padding: 0 0 0.875em 0;
+  text-transform: uppercase;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+input[type='text']:focus, [type='email']:focus, textarea:focus {
+	outline: none;
+	padding: 0 0 0.875em 0;
+}
+
+.message {
+	float: none;
+}
+
+.name {
+	float: left;
+	width: 45%;
+}
+
+select {
+  background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png') no-repeat right;
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.subject {
+  width: 100%;
+}
+
+.telephone {
+  width: 100%;
+}
+
+textarea {
+	line-height: 150%;
+	height: 150px;
+	resize: none;
+  width: 100%;
+}
+
+::-webkit-input-placeholder {
+	color: #474544;
+}
+
+:-moz-placeholder { 
+	color: #474544;
+	opacity: 1;
+}
+
+::-moz-placeholder {
+	color: #474544;
+	opacity: 1;
+}
+
+:-ms-input-placeholder {
+	color: #474544;
+}
+
+.form_button {
+  background: none;
+  border: solid 2px #474544;
+  color: #474544;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-size: 0.875em;
+  font-weight: bold;
+  outline: none;
+  padding: 20px 35px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.form_button:hover {
+  background: #474544;
+  color: #F2F3EB;
+}
+
+.form_button:disabled,
+.form_button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: default;
+  /* cursor: help; */
+  /* cursor: not-allowed; */
+}
+
+@media screen and (max-width: 768px) {
+  #container, .container-cards {
+    margin: 20px auto;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 26px;
+  }
+  
+  .underline {
+    width: 68px;
+  }
+  
+  .form_button {
+    padding: 15px 25px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  h1 {
+    font-size: 18px;
+  }
+  
+  .icon {
+    height: 35px;
+    width: 35px;
+  }
+  
+  .underline {
+    width: 53px;
+  }
+  
+  input[type='text'], [type='email'], select, textarea {
+    font-size: 0.875em;
+  }
 }

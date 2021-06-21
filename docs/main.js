@@ -3,8 +3,7 @@ const entrenamientos        = [];
 const componentes           = [];
 
 // selectores generales
-const main = document.querySelector('#main');
-const intro = document.querySelector('#intro')
+const intro = document.querySelector('#intro') // intro
 
 // Selectores entrenamiento
 const inputFechaProgramada      = document.querySelector('#input-fechaProgramada');
@@ -17,7 +16,7 @@ const inputPeso                 = document.querySelector('#input-peso');
 const inputElemento             = document.querySelector('#input-elemento');
 const inputEjercicio            = document.querySelector('#input-ejercicio');
 const inputRepeticiones         = document.querySelector('#input-repeticiones');
-const inputMetros               = document.querySelector('#input-metros');
+const listadoComponentes        = document.querySelector('#componentes');
 
 // Selectores de planificación
 const listaEntrenamientos       = document.querySelector('#entrenamientos');
@@ -29,12 +28,6 @@ const botonAgregaEntrenamiento  = document.querySelector('#buttonAgregaEntrenami
 const botonDefinirEntrenamiento = document.querySelector('#buttonDefinirEntrenamiento');
 
 // script para la intro de inicio:
-main.style.visibility = "hidden";
-setTimeout(() => {
-    intro.style.visibility = 'hidden';
-    main.style.visibility = "visible";
-    
-}, 1000);
 
 // metodos
 
@@ -43,11 +36,12 @@ const init = ()=>{
     botonAgregaEntrenamiento.disabled = true;
     botonDefinirEntrenamiento.disabled = true;
     botonComponente.disabled = false;
+    botonAgregaEntrenamiento.style.visibility = "hidden";
 
 };
 
-
 init();
+
 
 const habilitaEntrenamiento = ()=>{
 
@@ -56,18 +50,38 @@ const habilitaEntrenamiento = ()=>{
     botonEntrenamiento.disabled = false 
 }
 
-const componente = (elemento, peso, ejercicio, repeticiones, metros)=>{
+
+// Ejercicio : ${ element.ejercicio }, Repeticiones: ${ element.repeticiones }, Peso: ${ element.peso }, Elemento ${ element.elemento }, Metros: ${ element.metros }</li>` } );
+
+const componente = (elemento, peso, ejercicio, repeticiones)=>{
     
     componentes.push({
             elemento: elemento,
             peso: peso,
             ejercicio: ejercicio,
-            repeticiones: repeticiones,
-            metros: metros,
+            repeticiones: repeticiones
         });
 
+        let componentesHTML = '';
+
+        // esto de aca hay que integrarlo con el espacio donde van los ejercicios definidos para el treino
+        componentes.forEach( element =>{ 
+            
+            componentesHTML = componentesHTML + `
+        
+            <li> 
+            ${ (element.repeticiones != '' ? element.repeticiones : '') } 
+            ${ element.ejercicio } 
+            ${ (element.elemento != '' ? `con  ${element.elemento}` : '') }
+            ${ (element.peso != '' ? `con  ${element.peso} kilos` : '') } 
+            </li>`
+        
+        });
+        
+        listadoComponentes.innerHTML= componentesHTML;
         console.log( componentes )
         botonDefinirEntrenamiento.disabled = false;
+
 };
 
 const entrenamiento = (tipoDeEntrenamiento, duracion, vueltas, fechaProgramada, componentes )=>{
@@ -98,18 +112,40 @@ const agregaEntrenamiento = ( entrenamientos )=>{
     entrenamientos.forEach(element => {
 
         let componentesHTML = '';
-        element.componentes.forEach( element1 =>{ componentesHTML = componentesHTML + (element1.elemento)} )
+        element.componentes.forEach( element1 =>{ componentesHTML = componentesHTML + `
+        
+        <li class="card__title"> 
+        ${ (element1.repeticiones != '' ? element1.repeticiones : '') } 
+        ${ element1.ejercicio } 
+        ${ (element1.elemento != '' ? `con  ${element1.elemento}` : '') }
+        ${ (element1.peso != '' ? `con  ${element1.peso} kilos` : '') } 
+
+        </li>
+        `} )
+        
+        // en elsiguiente html hay que integrar con la card creada
         listaEntrenamientosHTML =listaEntrenamientosHTML + `
         
-        <li>
-        ${element.fechaProgramada} 
-        Tipo: ${element.tipoDeEntrenamiento}
-        Duración: ${element.duracion}
-        Vueltas: ${element.vueltas}
-        Ejercicios: ${ componentesHTML }
-        
-        
-        </li>`;
+        <div class="animate__animated animate__fadeIn">
+        <div class="card-container">
+              <div class="card card-1">
+                <div class="card__icon"><i class="fas fa-bolt"></i></div>
+                <p class="card__exit">${ (element.fechaProgramada != '' ? element.fechaProgramada : '') }<i class="fas fa-times"></i></p>
+                <div class="underline"></div>
+                <br>
+                <h3>
+                    ${ (element.tipoDeEntrenamiento != '' ? `${element.tipoDeEntrenamiento}` : '') }
+                    ${ (element.duracion != '' ? `${element.duracion} minutos` : '') }
+                    ${ (element.vueltas != '' ? `${element.vueltas} vueltas` : '') }
+                </h3>
+                  <ul>
+                    ${ componentesHTML }
+                  </ul>
+                <p class="card__apply">Aca pueden ir los comentarios del wod</p>
+              </div>
+            </div>
+            </div>
+            `;
           
     });
 
@@ -121,7 +157,6 @@ let elemento        = '';
 let peso            = '';
 let ejercicio       = '';
 let repeticiones    = '';
-let metros          = '';
 
 // variables entrenamiento
 let fechaProgramada     = '';
@@ -171,16 +206,14 @@ const valorEjercicio = inputEjercicio.addEventListener( 'keyup', (e)=>{
     repeticiones = inputRepeticiones.value;
     console.log( repeticiones );
  } );
-
- const valorMetros = inputMetros.addEventListener( 'keyup', (e)=>{ 
-    metros = inputMetros.value;
-    console.log( metros );
- } );
  
 
 // listeners botones
-botonComponente.addEventListener( 'click', (e)=>{ componente(elemento, peso, ejercicio, repeticiones, metros) });
+botonComponente.addEventListener( 'click', (e)=>{ 
+    e.preventDefault();
+    componente(elemento, peso, ejercicio, repeticiones) });
 botonEntrenamiento.addEventListener( 'click', (e)=>{ 
+    e.preventDefault();
     entrenamiento( tipoDeEntrenamiento, duracion, vueltas, fechaProgramada, componentes );
     agregaEntrenamiento(entrenamientos);
     init()
